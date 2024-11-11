@@ -5,7 +5,7 @@ O componente `syrin-notify-message` é responsável por enviar notificações pa
 
 ## Demo
 
-![Application Demo](./driagrams/Syrin-Notify-Message.gif)
+![Application Demo](./diagram/Syrin-Notify-Message.gif)
 
 ## Tabela de Conteúdos
 - [Instalação](#instalação)
