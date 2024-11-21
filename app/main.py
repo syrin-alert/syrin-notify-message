@@ -42,6 +42,8 @@ def format_message_for_telegram_markdown(message_text):
             header_match = re.match(r'\[(.*?)\] -', line)
             if header_match:
                 header_content = header_match.group(1).replace('-', ' ')
+                # Colocar a primeira letra em maiúscula
+                header_content = header_content[:1].upper() + header_content[1:]
                 # Adicionar o conteúdo formatado como uma linha separada com negrito
                 formatted_lines.append(f"*{header_content}*")
                 # Remover o cabeçalho e continuar processando o restante da linha
