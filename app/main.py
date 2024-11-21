@@ -34,16 +34,20 @@ def get_webhook_url():
 
 
 def format_message_for_telegram_markdown(message_text):
+    # Substituir o conteúdo dentro de colchetes por versão com asteriscos
+    message_text = re.sub(r'\[([^\]]+)\]', r'[*\1*]', message_text)  # Formatar conteúdo entre colchetes
+    
     formatted_lines = []
     for line in message_text.splitlines():
         if ':' in line:
             key, value = line.split(':', 1)
-            # Aplicar o formato de negrito usando o padrão do Telegram (MarkdownV2)
-            formatted_key = re.sub(r'([_*[\]()~`>#+\-=|{}.!])', r'\\\1', key.strip())  # Escapar caracteres especiais
+            # Escapar caracteres especiais no Telegram MarkdownV2
+            formatted_key = re.sub(r'([_*[\]()~`>#+\-=|{}.!])', r'\\\1', key.strip())
             formatted_line = f"*{formatted_key}:* {value.strip()}"
         else:
             formatted_line = line
         formatted_lines.append(formatted_line)
+    
     return '\n'.join(formatted_lines)
 
 
