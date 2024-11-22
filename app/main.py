@@ -47,14 +47,14 @@ def format_message_for_telegram_markdown(message_text):
                 # Adicionar o conteúdo formatado como uma linha separada com negrito
                 formatted_lines.append(f"*{header_content}*")
                 # Remover o cabeçalho e continuar processando o restante da linha
-                line = line.replace(header_match.group(0), '', 1).strip()
+                line = line.replace(header_match.group(0), '', 1)
 
         # Verificar se a linha contém ":"
         if ':' in line:
             key, value = line.split(':', 1)
             # Escapar caracteres especiais e aplicar o formato de negrito
-            formatted_key = re.sub(r'([_*[\]()~`>#+\-=|{}.!])', r'\\\1', key.strip())
-            formatted_line = f"*{formatted_key}:* {value.strip()}"
+            formatted_key = re.sub(r'([_*[\]()~`>#+\-=|{}.!])', r'\\\1', key)
+            formatted_line = f"*{formatted_key}:* {value}"
         else:
             formatted_line = line
 
